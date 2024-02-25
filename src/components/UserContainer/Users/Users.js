@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {User} from "../User/User";
 import {userService} from "../../../services/userService";
 import {UserDetails} from "../UserDetails/UserDetails";
+import css from './Users.module.css'
 
 const Users = () => {
     const [users, setUsers] = useState([])
@@ -14,10 +15,10 @@ const Users = () => {
         setUserDetails(user);
     }
     return (
-        <div>
-            {users.map(user => <User key={user.id} user={user} getCurrentUser={getCurrentUser}/>)}
+        <div className={css.Users}>
+            <div>{users.map(user => <User key={user.id} user={user} getCurrentUser={getCurrentUser}/>)}</div>
             <hr/>
-            {userDetails!==null && <UserDetails userDetails={userDetails}/>}
+            {userDetails && <UserDetails userDetails={userDetails}/>}
         </div>
 
     );
